@@ -2,13 +2,13 @@ class Solution {
 public:
     int missingMultiple(vector<int>& nums, int k) {
         int n = nums.size();
-        sort(nums.begin(), nums.end());
         int a = 0;
+        int curr = 0;
         unordered_set<int> s(nums.begin(), nums.end());
         for(int i=n-1; i>=0; i--){
             if(nums[i]%k == 0){
-                a = nums[i]/k;
-                break;
+                curr = nums[i]/k;
+                a = max(curr, a);
             }
         }
         int ans = k*a + k;
